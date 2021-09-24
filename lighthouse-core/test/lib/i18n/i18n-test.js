@@ -192,7 +192,7 @@ describe('i18n', () => {
 
   describe('#registerLocaleData', () => {
     // Store original locale data so we can restore at the end
-    const moduleLocales = require('../../../lib/i18n/locales.js');
+    const moduleLocales = require('../../../../shared/localization/locales.js');
     const clonedLocales = JSON.parse(JSON.stringify(moduleLocales));
 
     it('installs new locale strings', () => {

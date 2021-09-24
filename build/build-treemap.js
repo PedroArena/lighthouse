@@ -15,7 +15,7 @@ const {LH_ROOT} = require('../root.js');
  * are locale codes (en-US, es, etc.) and values are localized UIStrings.
  */
 function buildStrings() {
-  const locales = require('../lighthouse-core/lib/i18n/locales.js');
+  const locales = require('../shared/localization/locales.js');
   // TODO(esmodules): use dynamic import when build/ is esm.
   const utilCode = fs.readFileSync(LH_ROOT + '/lighthouse-treemap/app/src/util.js', 'utf-8');
   const {UIStrings} = eval(utilCode.replace(/export /g, '') + '\nmodule.exports = TreemapUtil;');
