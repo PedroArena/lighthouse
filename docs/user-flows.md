@@ -26,7 +26,7 @@ Navigation reports analyze a single page load. Navigation is the most common typ
 #### Limitations
 
 - Cannot analyze form submissions or single page app transitions.
-- Cannot analyze user interaction performance.
+- Cannot analyze user interactions.
 - Cannot analyze content that isn't available immediately on page load.
 
 #### Use Cases
@@ -159,15 +159,15 @@ When mapping a user flow onto the Lighthouse modes, strive for each report to ha
 
 1. `.navigate` to the URL of interest, proceed to step 2.
 2. Are you interacting with the page?
-  1. Yes - Proceed to step 3.
-  2. No - End your flow.
+    1. Yes - Proceed to step 3.
+    2. No - End your flow.
 3. Are you clicking a link?
-  1. Yes - Proceed to step 1.
-  2. No - Proceed to step 4.
+    1. Yes - Proceed to step 1.
+    2. No - Proceed to step 4.
 4. `.startTimespan`, proceed to step 5.
 5. Has the page or URL changed significantly during the timespan?
-  1. Yes - Proceed to step 6.
-  2. No - Either wait for a significant change or end your flow.
+    1. Yes - Proceed to step 6.
+    2. No - Either wait for a significant change or end your flow.
 6. `.stopTimespan`, proceed to step 7.
 7. `.snapshot`, proceed to step 2.
 
