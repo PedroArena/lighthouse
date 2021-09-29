@@ -45,7 +45,7 @@ import lighthouse from 'lighthouse';
 async function main() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const flow = new lighthouse.UserFlow(page);
+  const flow = await lighthouse.startFlow(page);
 
   await flow.navigate('https://example.com');
   await browser.close();
@@ -87,7 +87,7 @@ async function main() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto('https://example.com');
-  const flow = new lighthouse.UserFlow(page);
+  const flow = await lighthouse.startFlow(page);
 
   await flow.beginTimespan();
   await page.type('#username', 'lighthouse');
@@ -133,7 +133,7 @@ async function main() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto('https://example.com');
-  const flow = new lighthouse.UserFlow(page);
+  const flow = await lighthouse.startFlow(page);
 
   await page.click('#expand-sidebar');
   await flow.snapshot();
@@ -207,7 +207,7 @@ async function main() {
   // Setup the browser and Lighthouse.
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const flow = new lighthouse.UserFlow(page);
+  const flow = await lighthouse.startFlow(page);
 
   // Phase 1 - Navigate to our landing page.
   await flow.navigate('https://www.bestbuy.com');
