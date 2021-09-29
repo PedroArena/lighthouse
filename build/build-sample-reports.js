@@ -20,7 +20,13 @@ const {LH_ROOT} = require('../root.js');
 /** @type {LH.FlowResult} */
 const flowResult = JSON.parse(
   fs.readFileSync(
-    `${LH_ROOT}/lighthouse-core/test/fixtures/fraggle-rock/reports/sample-lhrs.json`,
+    `${LH_ROOT}/lighthouse-core/test/fixtures/fraggle-rock/reports/sample-flow-result.json`,
+    'utf-8'
+  )
+);
+const localizedFlowResult = JSON.parse(
+  fs.readFileSync(
+    `${LH_ROOT}/lighthouse-core/test/fixtures/fraggle-rock/reports/sample-flow-result.en-XL.json`,
     'utf-8'
   )
 );
@@ -61,11 +67,20 @@ const DIST = path.join(LH_ROOT, 'dist');
   });
 
   generateFlowReport();
+  generateLocalizedFlowReport();
 })();
 
 function generateFlowReport() {
   const html = ReportGenerator.generateFlowReportHtml(flowResult);
   const filepath = `${DIST}/sample-reports/flow-report/index.html`;
+  fs.mkdirSync(path.dirname(filepath), {recursive: true});
+  fs.writeFileSync(filepath, html, {encoding: 'utf-8'});
+  console.log('✅', filepath, 'written.');
+}
+
+function generateLocalizedFlowReport() {
+  const html = ReportGenerator.generateFlowReportHtml(localizedFlowResult);
+  const filepath = `${DIST}/sample-reports/flow-report_en-XL/index.html`;
   fs.mkdirSync(path.dirname(filepath), {recursive: true});
   fs.writeFileSync(filepath, html, {encoding: 'utf-8'});
   console.log('✅', filepath, 'written.');
