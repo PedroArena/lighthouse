@@ -8,7 +8,7 @@ import fs from 'fs';
 import {dirname} from 'path';
 import {fileURLToPath} from 'url';
 
-export const flowResult = JSON.parse(
+export const flowResult: LH.FlowResult = JSON.parse(
   fs.readFileSync(
     // eslint-disable-next-line max-len
     `${dirname(fileURLToPath(import.meta.url))}/../../lighthouse-core/test/fixtures/fraggle-rock/reports/sample-flow-result.json`,

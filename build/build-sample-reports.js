@@ -15,20 +15,15 @@ const ReportGenerator = require('../report/generator/report-generator.js');
 const {defaultSettings} = require('../lighthouse-core/config/constants.js');
 const lighthouse = require('../lighthouse-core/index.js');
 const lhr = /** @type {LH.Result} */ (require('../lighthouse-core/test/results/sample_v2.json'));
-const {LH_ROOT} = require('../root.js');
+const {LH_ROOT, readJson} = require('../root.js');
 
 /** @type {LH.FlowResult} */
-const flowResult = JSON.parse(
-  fs.readFileSync(
-    `${LH_ROOT}/lighthouse-core/test/fixtures/fraggle-rock/reports/sample-flow-result.json`,
-    'utf-8'
-  )
+const flowResult = readJson(
+  `${LH_ROOT}/lighthouse-core/test/fixtures/fraggle-rock/reports/sample-flow-result.json`
 );
-const localizedFlowResult = JSON.parse(
-  fs.readFileSync(
-    `${LH_ROOT}/lighthouse-core/test/fixtures/fraggle-rock/reports/sample-flow-result.en-XL.json`,
-    'utf-8'
-  )
+/** @type {LH.FlowResult} */
+const localizedFlowResult = readJson(
+  `${LH_ROOT}/lighthouse-core/test/fixtures/fraggle-rock/reports/sample-flow-result.en-XL.json`
 );
 
 const DIST = path.join(LH_ROOT, 'dist');
